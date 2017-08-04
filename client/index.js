@@ -14,7 +14,13 @@ function ButtonEvent() {
 
   var initialText = $("#paragraph").text();
 
-  $("#paragraph").text(initialText + _GenerateRandomCharacters());
+  $("#paragraph").text(initialText + "\n" + _GenerateRandomCharacters());
+}
+
+socket.on("clientDisconnected", ClientDisconnectedEvent);
+function ClientDisconnectedEvent() {
+
+  alert("A buddy disconnected :(");
 }
 
 // Generate random characters to append to the text
