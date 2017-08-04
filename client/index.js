@@ -12,5 +12,22 @@ function ButtonClick() {
 socket.on("fromServerButtonPress", ButtonEvent);
 function ButtonEvent() {
 
-  // Do something on all clients
+  var initialText = $("#paragraph").text();
+
+  $("#paragraph").text(initialText + _GenerateRandomCharacters());
+}
+
+// Generate random characters to append to the text
+function _GenerateRandomCharacters() {
+
+  var output = "";
+  var chars =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
+    "abcdefghijklmnopqrstuvwxyz" +
+    "0123456789";
+
+  for (var i = 0; i < 5; i++)
+    output += chars.charAt(Math.floor(Math.random() * chars.length));
+
+  return output;
 }
