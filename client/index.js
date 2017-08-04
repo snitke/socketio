@@ -4,11 +4,12 @@ var socket = io();
 
 $("button").click(ButtonClick);
 function ButtonClick() {
-  socket.emit("button");
+
+  socket.emit("fromClientButtonPress");
 }
 
-socket.on("button", ButtonEvent);
+socket.on("fromServerButtonPress", ButtonEvent);
 function ButtonEvent() {
-  console.log("Button press!");
-  alert("Someone pressed the button!");
+
+  // Do something on all clients
 }
