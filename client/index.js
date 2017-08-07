@@ -1,4 +1,5 @@
 var socket = io();
+var socketNamespace = io("/namespace");
 
 // Capture the button click event
 $("button").click(ButtonClick);
@@ -21,6 +22,12 @@ socket.on("clientDisconnected", ClientDisconnectedEvent);
 function ClientDisconnectedEvent() {
 
   alert("A buddy disconnected :(");
+}
+
+namespace.on("connection", NamespaceConnectionEvent);
+function NamespaceConnectionEvent() {
+
+  alert("Connection on namespace established");
 }
 
 // Generate random characters to append to the text

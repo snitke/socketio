@@ -13,6 +13,17 @@ function ServerListening() {
   console.log("Server listening (localhost:3000)...");
 }
 
+var namespace = io.of("/namespace");
+
+// On connection, get the socket
+namespace.on("connection", ConnectionEvent);
+function ConnectionEvent(socket) {
+
+  // Show in server console that a client has connected
+  console.log("Client", socket.id, "has connected");
+  namespace.emit("connection");
+}
+
 // On connection, get the socket
 io.on("connection", ConnectionEvent);
 function ConnectionEvent(socket) {
